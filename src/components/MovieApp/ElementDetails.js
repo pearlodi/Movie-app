@@ -8,9 +8,6 @@ const ElementDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
-  useEffect(() => {
-    fetchMovieDetails();
-  }, []);
 
   const fetchMovieDetails = async () => {
     try {
@@ -21,6 +18,9 @@ const ElementDetails = () => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    fetchMovieDetails();
+  }, );
 
   if (!movie) {
     return <div>Loading...</div>;
@@ -28,27 +28,27 @@ const ElementDetails = () => {
 
   return (
     <>
-    <NavBar />
-    <div className='move'>
+      <NavBar />
+      <div className='move'>
 
-    <div className='list'>
-      <div className='lists'> 
-      <div className='listss'>
-      <img src = {movie.large_cover_image} className='movie_image'/><br /><br />
-</div>
-<div>
-            <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
-            <h3 className='movie_title'>{movie.description_full.length > 700 ? movie.description_full.substr(0, 650) : movie.description_full}</h3>
-            <p className='movie_title'>Ratings: {movie.rating}</p>
-            <p className='movie_title'>Year: {movie.year}</p><br />
-            <a href={movie.url} className='download'>Downloads</a>
+        <div className='list'>
+          <div className='lists'>
+            <div className='listss'>
+              <img src={movie.large_cover_image} className='movie_image' alt='movie cover' /><br /><br />
+            </div>
+            <div>
+              <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
+              <h3 className='movie_title'>{movie.description_full.length > 700 ? movie.description_full.substr(0, 650) : movie.description_full}</h3>
+              <p className='movie_title'>Ratings: {movie.rating}</p>
+              <p className='movie_title'>Year: {movie.year}</p><br />
+              <a href={movie.url} className='download'>Downloads</a>
 
 
-      {/* Display other movie details */}
+              {/* Display other movie details */}
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
-    </div>
     </>
   );
 };
