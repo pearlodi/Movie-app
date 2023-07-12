@@ -10,7 +10,7 @@ const DisplayPage = () => {
 </p>
 <p className='display_2'>Anywhere, Anytime</p>
 <br></br>
-<Link to="/elementList" className='display_3'>Get started</Link>
+<Link to="/elementList" className='display_3'>LET'S GO</Link>
 
         </div>
     </div>
