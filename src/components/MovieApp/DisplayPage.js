@@ -9,7 +9,8 @@ const DisplayPage = () => {
         <p className='disp'>Unlimited movies, TV shows, and more
 </p>
 <p className='display_2'>Anywhere, Anytime</p>
-<p className='display_3'><a href='elementList' >GET STARTED</a></p>
+<br></br>
+<Link to="/elementList" className='display_3'>Get started</Link>
 
         </div>
     </div>
