@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
 import './MovieApp.css'
-import { Link } from 'react-router-dom'
 import HorrorsList from './HorrorsList'
 import CemedyList from './CemedyList'
 import SciFI from './SciFi'
