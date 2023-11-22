@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 const HorrorsList = () => {
   const [movies, setMovies] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState('horror');
+  const selectedGenre = useState('horror')[0];
 
 
-  useEffect(() => {
-    fetchMovies();
-  }, [selectedGenre]);
-  
+ 
   const fetchMovies = async () => {
     try {
       const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
@@ -25,6 +22,9 @@ const HorrorsList = () => {
     }
   };
   
+  useEffect(() => {
+    fetchMovies();
+  },);
   
 
   return (
