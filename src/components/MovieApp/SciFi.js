@@ -25,7 +25,7 @@ const SciFI = () => {
   
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, );
   
 
   return (
