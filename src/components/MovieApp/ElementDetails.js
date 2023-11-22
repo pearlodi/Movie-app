@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './MovieApp.css'
-import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
+import SelectMovies from './SelectMovies';
 
 const ElementDetails = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const ElementDetails = () => {
     try {
       const response = await axios.get(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
       const data = response.data.data.movie;
+      console.log(data);
       setMovie(data);
     } catch (error) {
       console.log(error);
@@ -23,34 +25,59 @@ const ElementDetails = () => {
   }, );
 
   if (!movie) {
-    return <div>Loading...</div>;
-  }
+    return (
+      <div className='spinners'>
+      <div className='spinner'>
+    <img src={process.env.PUBLIC_URL + '/spinner.gif'} alt='' className='spinner--img'/>
+      </div>
 
+      </div>
+    )
+  }
+  const divStyle = {
+    backgroundImage: `url(${movie.large_cover_image})`,
+    backgroundSize: 'cover', // You can adjust this as needed
+    backgroundPosition: 'center', // You can adjust this as needed
+  };
   return (
     <>
-      <NavBar />
-      <div className='move'>
-
-        <div className='list'>
-          <div className='lists'>
-            <div className='listss'>
-              <img src={movie.large_cover_image} className='movie_image' alt='movie cover' /><br /><br />
+      {/* <NavBar /> */}
+      <div className='move' style={divStyle}>
+     
+        <div className='movie-id-list' >
+      
+            <div className='movie-ids'>
+            <Link to={`/elementList`} className='movie_back'>
+              Back to movie list<img src={process.env.PUBLIC_URL + '/arrow.svg'} alt='' className='back'/>
+            </Link>
+            <h3 className='movie-id-title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
+           <div className='id-details'>
+           <div className='id-image'>
+              <img src={movie.large_cover_image} className='id--image' alt='movie cover' /><br /><br />
             </div>
-            <div>
-              <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
-              <h3 className='movie_title'>{movie.description_full.length > 700 ? movie.description_full.substr(0, 650) : movie.description_full}</h3>
-              <p className='movie_title'>Ratings: {movie.rating}</p>
-              <p className='movie_title'>Year: {movie.year}</p><br />
-              <a href={movie.url} className='download'>Downloads</a>
+            <div className='movie-id-details'>
+              
+              <h3 className='id-text'>{movie.description_intro ? movie.description_intro : "oops.....No description available"}</h3>
+              <p className='id-text'>Ratings: {movie.rating}</p>
+              <p className='id-text'>Year: {movie.year}</p>
+              <p className='id-text'>Genre: {movie.genres}</p><br />
+              {/* <a href={movie.url} ojjclassName='download'>Downloads</a> */}
 
 
               {/* Display other movie details */}
             </div>
+           </div>
+            </div>
           </div>
-        </div>
       </div>
+
+<div className='selectMovies'> 
+<SelectMovies />
+  </div>      
     </>
   );
 };
 
 export default ElementDetails;
+
+
