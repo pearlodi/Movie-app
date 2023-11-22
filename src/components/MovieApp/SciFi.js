@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 const SciFI = () => {
   const [movies, setMovies] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState('Sci-Fi');
+  const selectedGenre = useState('sci-fi')[0];
+  
 
 
-  useEffect(() => {
-    fetchMovies();
-  }, [selectedGenre]);
   
   const fetchMovies = async () => {
     try {
@@ -25,6 +23,9 @@ const SciFI = () => {
     }
   };
   
+  useEffect(() => {
+    fetchMovies();
+  }, []);
   
 
   return (

@@ -12,9 +12,6 @@ const ElementList = () => {
   const moviesPerPage = 1;
 
   useEffect(() => {
-    fetchMovies();
-  }, [currentPage, searchQuery]);
-
   const fetchMovies = async () => {
     try {
       setLoading(true);
@@ -34,6 +31,9 @@ const ElementList = () => {
       setLoading(false);
     }
   };
+
+    fetchMovies();
+  }, [currentPage, searchQuery]);
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
