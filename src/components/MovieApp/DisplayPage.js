@@ -10,7 +10,7 @@ const DisplayPage = () => {
   <>  <div className='display'>
   <div className='overlay'>
  <div className='display-info'>
- <p className='display-text'>YOUR ONE STOP <span className='span'>MOVIE</span> </p>
+ <p className='display-text'>YOUR ONE STOP <span className='span'>MOVIE</span> PALACE</p>
  <p className='display-title'>Search for unlimited movies from various genres to watch next</p>
 {/* <p className='display_text-b'>Anywhere, Anytime</p> */}
 <Link to="/elementList" className='display_3'>Get started<img src='arrow.svg' alt='' /></Link>
