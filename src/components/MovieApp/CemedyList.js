@@ -38,7 +38,7 @@ const CemedyList = () => {
 {movies.map((movie) => (
 
 <div className='movie-card'>
-<h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
+<div className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</div>
    <div className='movie-img'>
    <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
   </div>

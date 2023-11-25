@@ -2,11 +2,9 @@ import axios from 'axios';
 import './MovieApp.css'
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-const HorrorsList = () => {
+const CemedyList = () => {
   const [movies, setMovies] = useState([]);
   const selectedGenre = useState('horror')[0];
-
-
 
 
   const fetchMovies = async () => {
@@ -22,6 +20,8 @@ const HorrorsList = () => {
       console.log(error);
     }
   };
+  
+
   useEffect(() => {
     fetchMovies();
   },);
@@ -38,11 +38,12 @@ const HorrorsList = () => {
 {movies.map((movie) => (
 
 <div className='movie-card'>
-<h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
+<div className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</div>
    <div className='movie-img'>
    <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
   </div>
   <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
+
 </div>
   
 ))}
@@ -51,4 +52,4 @@ const HorrorsList = () => {
   );
 };
 
-export default HorrorsList;
+export default CemedyList;

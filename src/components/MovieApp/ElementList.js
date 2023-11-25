@@ -106,16 +106,20 @@ const ElementList = () => {
         <div className='movie_details'>
           
         {movies.map((movie) => (
+          <div>
           <div key={movie.id} className='movie-card'>
-            <h3 className='movie_title'>
-              {movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}
-            </h3>
-            <p>{movie.genre}</p>
-            <div className='movie-img'>
+          <div className='movie_title'>
+              {movie.title.length > 8 ? movie.title.substr(0, 8) : movie.title}...
+            </div>
+            {/* <p>{movie.genre}</p> */}
+            <div className='element-movie-img'>
+
               <img src={movie.large_cover_image} className='movie--img' alt='movie cover' />
             </div>
-         
-            <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
+              
+          <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
+          </div>
+       
           </div>
         ))}
       </div>

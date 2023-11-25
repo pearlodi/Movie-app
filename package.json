@@ -28,9 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },  
-  "deploymentConfig": {
-    "publish": "/opt/build/repo/build" 
-},
+
   "eslintConfig": {
     "extends": [
       "react-app",

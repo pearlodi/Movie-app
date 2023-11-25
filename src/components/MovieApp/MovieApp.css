@@ -8,17 +8,22 @@ body {
     background-size: cover;
 }
 
+.display-desktop-bck {
+    background-color: #0F1215;
+    padding: 0 32px;
+}
+
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(70px);
+    backdrop-filter: blur(30px);
     border: 1px solid #FFFFFF60;
     background: linear-gradient(111deg, rgba(49, 32, 32, 0.14) 1.21%, rgba(196, 196, 196, .02) 100%);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(3px);
     justify-content: center;
     align-items: center;
 }
@@ -34,11 +39,10 @@ body {
 }
 
 .display-text {
-    font-size: 60px;
+    font-size: 80px;
     width: 1200px;
     max-width: 100%;
     text-align: center;
-    line-height: 0.01px;
     color: white;
 }
 
@@ -48,6 +52,7 @@ body {
     width: 1200px;
     max-width: 100%;
     text-align: center;
+    margin-top: 20px;
 
 }
 
@@ -83,12 +88,11 @@ body {
 
 .movie_details {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
     justify-items: center;
     margin: auto;
-    padding: 80px;
-    gap: 20px;
+    gap: 30px 20px;
 
 }
 
@@ -96,11 +100,17 @@ body {
     border-radius: 16px;
     border: 0.8px solid rgba(214, 251, 252, 0.06);
     background: linear-gradient(65deg, #0F1215 4.18%, #181A1A 116.91%);
-    padding: 10px 32px;
+    padding: 20px 32px;
 }
 
 .movie-img {
     width: 200px;
+    height: 250px;
+
+}
+
+.element-movie-img {
+    width: 100%;
     height: 250px;
 
 }
@@ -115,13 +125,13 @@ body {
     display: flex;
     overflow-x: scroll;
     gap: 30px;
-    padding: 24px;
+    padding: 24px 0;
 
 }
 
 .movie_app {
     background-color: #0F1215;
-    padding: 20px;
+    padding: 40px;
 }
 
 .movie_nav {
@@ -181,6 +191,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 22px;
+    margin-top: 10px;
 }
 
 .movie_link {
@@ -264,14 +275,13 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 40px;
-    padding-left: 20px;
 }
 
 .line {
     height: 1px;
     background: linear-gradient(169deg, #FFF 8.16%, #505356 150.61%);
     width: 1200px;
-    margin-left: 20px;
+    max-width: 100%;
 
 }
 
@@ -406,4 +416,133 @@ body::-webkit-scrollbar-track {
 
 .select_details {
     scrollbar-width: none;
+}
+
+@media (max-width: 900px) {
+
+    .movie_details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-items: center;
+        margin: auto;
+        gap: 20px;
+
+    }
+
+
+}
+
+@media (max-width: 600px) {
+
+    .display-info {
+        padding-left: 0;
+    }
+
+    .display_3 {
+        padding: 12px;
+    }
+
+    .display-text {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    .line {
+        margin-left: 0;
+    }
+
+    .select_details {
+        display: flex;
+        overflow-x: scroll;
+        gap: 21px;
+        padding: 24px 0;
+    }
+
+    .movie-img {
+        width: 150px;
+        height: 174px;
+    }
+
+    .movie-card {
+        padding: 7px 19px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .movie_title {
+        font-size: 18px;
+    }
+
+    .movie--img {
+        margin-top: 10px;
+    }
+
+    .movie_link {
+        margin-top: 18px;
+    }
+
+    .display-desktop-bck {
+        background-color: #0F1215;
+        padding: 0;
+    }
+
+    .movie_details {
+        padding: 0;
+    }
+
+    .movie_details {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+        margin: auto;
+        gap: 20px;
+
+    }
+
+    .element-movie-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .index-back {
+        padding-left: 0;
+    }
+
+    .page {
+        flex-direction: column;
+    }
+
+    .search {
+        padding: 10px 0px;
+    }
+
+    .movie_app {
+        padding: 20px;
+        padding-bottom: 140px;
+    }
+
+    .id-details {
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .id-image {
+        padding-left: 0;
+    }
+
+    .movie-id-details {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .id-image {
+        width: 100%;
+    }
+
+    .id-text {
+        padding: 10px;
+    }
 }

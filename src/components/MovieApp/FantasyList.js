@@ -39,8 +39,8 @@ const HorrorsList = () => {
 
 <div className='movie-card'>
 <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
-   <div className='movie-img'>
-   <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
+   <div className=''>
+   <img src={movie.large_cover_image} className='' alt='movie cover'/>
   </div>
   <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
 </div>
