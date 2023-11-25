@@ -37,14 +37,15 @@ const DocumentList = () => {
 {movies.map((movie) => (
 <div>
 <div className='movie-card'>
-<div>
-<Link to={`/details/${movie.id}`} className='movie_link'>View tails</Link>
 
-</div>
 <p className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</p>
    <div className='movie-img'>
    <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
   </div>
+  <div>
+<Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
+
+</div>
 </div>
 
   </div>

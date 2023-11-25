@@ -131,7 +131,7 @@ body {
 
 .movie_app {
     background-color: #0F1215;
-    padding: 40px;
+    padding: 1px 40px;
 }
 
 .movie_nav {
@@ -521,7 +521,6 @@ body::-webkit-scrollbar-track {
 
     .movie_app {
         padding: 20px;
-        padding-bottom: 140px;
     }
 
     .id-details {
