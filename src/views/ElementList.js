@@ -77,21 +77,21 @@ const fetchMovies = async () => {
     }
     return null;
   });
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
-        params: {
-          query_term: searchQuery,
-          page: 1, // Reset to the first page when searching
-        },
-      });
-      const data = response.data.data.movies;
-      setMovies(data);
-      setCurrentPage(1); // Reset the current page to 1
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSearch = async () => {
+  //   try {
+  //     const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
+  //       params: {
+  //         query_term: searchQuery,
+  //         page: 1, // Reset to the first page when searching
+  //       },
+  //     });
+  //     const data = response.data.data.movies;
+  //     setMovies(data);
+  //     setCurrentPage(1); // Reset the current page to 1
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className='movie_app'>

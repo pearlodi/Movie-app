@@ -10,6 +10,7 @@ const ElementDetails = () => {
   const [movie, setMovie] = useState(null);
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchMovieDetails = async () => {
     try {
       const response = await axios.get(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
@@ -21,7 +22,7 @@ const ElementDetails = () => {
   };
   useEffect(() => {
     fetchMovieDetails();
-  },  []);
+  },  [fetchMovieDetails, id]);
 
   if (!movie) {
     return (
