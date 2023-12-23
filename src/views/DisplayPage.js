@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import './MovieApp.css'
-import HorrorsList from './HorrorsList'
-import CemedyList from './CemedyList'
-import SciFI from './SciFi'
-import DocumentList from './DocumentList'
+import '../assets/css/MovieApp.css'
+import HorrorsList from '../components/HorrorsList'
+import CemedyList from '../components/CemedyList'
+import SciFI from '../components/SciFi'
+import DocumentList from '../components/DocumentList'
 const DisplayPage = () => {
   return (
   <>  <div className='display'>

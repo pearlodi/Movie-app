@@ -74,11 +74,10 @@ body {
     color: white;
     width: 150px;
     border-radius: 16px;
-    border-radius: 16px;
     border: 0.8px solid rgba(214, 251, 252, 0.06);
 
-    background: linear-gradient(65deg, #0F1215 4.18%, #181A1A 116.91%);
-    padding: 24px;
+    background: rgb(195, 28, 28);
+    padding: 16px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -93,6 +92,8 @@ body {
     justify-items: center;
     margin: auto;
     gap: 30px 20px;
+    height: fit-content;
+    min-height: 100vh;
 
 }
 
@@ -131,7 +132,12 @@ body {
 
 .movie_app {
     background-color: #0F1215;
-    padding: 1px 40px;
+    padding: 25px 40px 120px 40px
+}
+
+.display_movies {
+    background-color: #0F1215;
+    padding: 32px
 }
 
 .movie_nav {
@@ -279,9 +285,10 @@ body {
 
 .line {
     height: 1px;
-    background: linear-gradient(169deg, #FFF 8.16%, #505356 150.61%);
+    background: linear-gradient(169deg, #1e1e1e 8.16%, #505356 150.61%);
     width: 1200px;
     max-width: 100%;
+
 
 }
 
@@ -300,6 +307,17 @@ body {
     height: 100%;
 }
 
+.no_movies {
+    height: 100vh;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+}
 
 
 .move {
@@ -332,7 +350,7 @@ body {
     padding-left: 40px;
     padding-top: 40px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .content {

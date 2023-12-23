@@ -1,5 +1,5 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 const CemedyList = () => {
@@ -29,7 +29,7 @@ const CemedyList = () => {
   
 
   return (
-    <div className='movie_app'>
+    <div className='display_movies'>
 
 <p className='movie-genre'>HORROR</p>
 <div className='line'></div>
@@ -37,7 +37,7 @@ const CemedyList = () => {
 
 {movies.map((movie) => (
 
-<div className='movie-card'>
+<div className='movie-card' key={movie.id}>
 <div className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</div>
    <div className='movie-img'>
    <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>

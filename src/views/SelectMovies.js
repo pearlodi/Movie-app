@@ -1,5 +1,5 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
@@ -52,7 +52,7 @@ const SelectMovies = () => {
           //   </div>
           //   <Link to={`/details/${movie.id}`} className='movie_detail'>View Details</Link>
           // </div>
-       <div className='movie-card'>
+       <div className='movie-card' key={movie.id}>
         <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
            <div className='movie-img'>
            <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>

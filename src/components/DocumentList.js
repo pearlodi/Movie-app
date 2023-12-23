@@ -1,5 +1,5 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css'
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 const DocumentList = () => {
@@ -28,15 +28,15 @@ const DocumentList = () => {
   
 
   return (
-    <div className='movie_app'>
+    <div className='display_movies'>
 
 <p className='movie-genre'>DOCUMENTARY</p>
 <div className='line'></div>
 <div className='select_details'>
 
 {movies.map((movie) => (
-<div>
-<div className='movie-card'>
+
+<div className='movie-card' key={movie.id}>
 
 <p className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</p>
    <div className='movie-img'>
@@ -48,7 +48,6 @@ const DocumentList = () => {
 </div>
 </div>
 
-  </div>
 ))}
 </div>
 </div>

@@ -1,40 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './MovieApp.css';
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
-// import LoadingAnimation from './LoadingAnimation';
 
 const ElementList = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const moviesPerPage = 1;
+  const [totalMoviesCount, setTotalMoviesCount] = useState(0);
+  const moviesPerPage = 100;
 
   useEffect(() => {
-  const fetchMovies = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get('https://yts.mx/api/v2/list_movies.json', 
-      {
-        params: {
-          page: currentPage,
-          query_term: searchQuery,
-        },
-      });
-      const data = response.data.data.movies;
-      console.log(data)
-      setMovies(data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+   // Inside the useEffect fetching movies
+const fetchMovies = async () => {
+  try {
+    setLoading(true);
+    const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
+      params: {
+        page: currentPage,
+        query_term: searchQuery,
+      },
+    });
+    const data = response.data.data.movies;
+    const totalMovies = response.data.data.movie_count || 0; // Ensure you have a default value for the count
+    setMovies(data);
+    setTotalMoviesCount(totalMovies);
+    setLoading(false);
+  } catch (error) {
+    console.log(error);
+    setLoading(false);
+  }
+};
 
+
+
+    
     fetchMovies();
   }, [currentPage, searchQuery]);
-
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -43,7 +46,7 @@ const ElementList = () => {
     setCurrentPage(page);
   };
 
-  const totalPages = Math.ceil(movies.length / moviesPerPage);
+  const totalPages = Math.ceil(totalMoviesCount / moviesPerPage);
   const pageButtons = Array.from({ length: totalPages }, (_, index) => {
     if (
       index === 0 ||
@@ -94,35 +97,34 @@ const ElementList = () => {
     <div className='movie_app'>
        <div>
      <Link to={`/`} className='index-back'>
-              Back to movie list<img src={process.env.PUBLIC_URL + '/arrow.svg'} alt='' className='back'/>
+             <img src={process.env.PUBLIC_URL + '/arrow.svg'} alt='' className='back'/> Home
             </Link>
   </div>
+  <br></br>
       {loading ? (
 <div className='spinners'>
 <div> <img src={process.env.PUBLIC_URL + '/spinner.gif'} alt='' className='spinner--img'/></div>
   </div>
 ) : (
- 
-        <div className='movie_details'>
-          
-        {movies.map((movie) => (
-          <div>
-          <div key={movie.id} className='movie-card'>
-          <div className='movie_title'>
-              {movie.title.length > 8 ? movie.title.substr(0, 8) : movie.title}...
-            </div>
-            {/* <p>{movie.genre}</p> */}
-            <div className='element-movie-img'>
-
-              <img src={movie.large_cover_image} className='movie--img' alt='movie cover' />
-            </div>
-              
-          <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
-          </div>
-       
-          </div>
-        ))}
+ <>  <div className='movie_details'>
+  {movies && movies.length > 0 ? (
+    movies.map((movie) => (
+      <div key={movie.id} className='movie-card '>
+        <div className='movie_title'>
+          {movie.title.length > 8 ? movie.title.substr(0, 8) : movie.title}...
+        </div>
+        <div className='element-movie-img'>
+          <img src={movie.large_cover_image} className='movie--img' alt='movie cover' />
+        </div>
+        <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
       </div>
+    ))
+  ) : (
+    <div className='no_movies'>No movies found</div>
+  )}
+</div>
+</>
+
       )}
       <div className='movieApp_pagination' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
         <div>
@@ -130,7 +132,7 @@ const ElementList = () => {
             <div className='pagination'>{pageButtons}</div>
             <div className='search'>
               <input className='search' type="text" value={searchQuery} onChange={handleChange} />
-              <button className='search-btn' onClick={handleSearch}>Search</button>
+              {/* <button className='search-btn' onClick={handleSearch}>Search</button> */}
             </div>
           </div>
         </div>

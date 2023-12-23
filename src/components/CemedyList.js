@@ -1,12 +1,10 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css'
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-const HorrorsList = () => {
+const CemedyList = () => {
   const [movies, setMovies] = useState([]);
-  const selectedGenre = useState('fantasy')[0];
-
-
+  const selectedGenre = useState('comedy')[0];
 
 
   const fetchMovies = async () => {
@@ -23,24 +21,26 @@ const HorrorsList = () => {
     }
   };
   
+
   useEffect(() => {
     fetchMovies();
-  }, );
+  },);
+  
   
 
   return (
-    <div className='movie_app'>
+    <div className='display_movies'>
 
-<p className='movie-genre'>FANTASY</p>
+<p className='movie-genre'>COMEDY</p>
 <div className='line'></div>
 <div className='select_details'>
 
 {movies.map((movie) => (
 
-<div className='movie-card'>
-<h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
-   <div className=''>
-   <img src={movie.large_cover_image} className='' alt='movie cover'/>
+<div className='movie-card' key={movie.id}>
+<div className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</div>
+   <div className='movie-img'>
+   <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
   </div>
   <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
 </div>
@@ -51,4 +51,4 @@ const HorrorsList = () => {
   );
 };
 
-export default HorrorsList;
+export default CemedyList;
