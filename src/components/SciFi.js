@@ -1,13 +1,14 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-const DocumentList = () => {
+const SciFI = () => {
   const [movies, setMovies] = useState([]);
-  const selectedGenre = useState('comedy')[0];
+  const selectedGenre = useState('sci-fi')[0];
+  
 
 
- 
+  
   const fetchMovies = async () => {
     try {
       const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
@@ -21,23 +22,22 @@ const DocumentList = () => {
       console.log(error);
     }
   };
+  
   useEffect(() => {
     fetchMovies();
   }, );
   
-  
-  
 
   return (
-    <div className='movie_app'>
+    <div className='display_movies'>
 
-<p className='movie-genre'>DOCUMENTARY</p>
+<p className='movie-genre'>Sci-Fi</p>
 <div className='line'></div>
 <div className='select_details'>
 
 {movies.map((movie) => (
 
-<div className='movie-card'>
+<div className='movie-card' key={movie.id}>
 <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
    <div className='movie-img'>
    <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
@@ -51,4 +51,4 @@ const DocumentList = () => {
   );
 };
 
-export default DocumentList;
+export default SciFI;

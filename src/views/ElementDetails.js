@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
 import SelectMovies from './SelectMovies';
 
@@ -10,11 +10,11 @@ const ElementDetails = () => {
   const [movie, setMovie] = useState(null);
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchMovieDetails = async () => {
     try {
       const response = await axios.get(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
       const data = response.data.data.movie;
-      console.log(data);
       setMovie(data);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ const ElementDetails = () => {
   };
   useEffect(() => {
     fetchMovieDetails();
-  }, );
+  },  [fetchMovieDetails, id]);
 
   if (!movie) {
     return (

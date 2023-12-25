@@ -1,13 +1,14 @@
 import axios from 'axios';
-import './MovieApp.css'
+import '../assets/css/MovieApp.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 const HorrorsList = () => {
   const [movies, setMovies] = useState([]);
-  const selectedGenre = useState('horror')[0];
+  const selectedGenre = useState('fantasy')[0];
 
 
- 
+
+
   const fetchMovies = async () => {
     try {
       const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
@@ -24,7 +25,7 @@ const HorrorsList = () => {
   
   useEffect(() => {
     fetchMovies();
-  },);
+  }, );
   
 
   return (
@@ -36,10 +37,10 @@ const HorrorsList = () => {
 
 {movies.map((movie) => (
 
-<div className='movie-card'>
+<div className='movie-card' key={movie.id}>
 <h3 className='movie_title'>{movie.title.length > 20 ? movie.title.substr(0, 10) : movie.title}</h3>
-   <div className='movie-img'>
-   <img src={movie.large_cover_image} className='movie--img' alt='movie cover'/>
+   <div className=''>
+   <img src={movie.large_cover_image} className='' alt='movie cover'/>
   </div>
   <Link to={`/details/${movie.id}`} className='movie_link'>View Details</Link>
 </div>
